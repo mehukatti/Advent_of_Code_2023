@@ -1,5 +1,7 @@
 // C++ to solve the day 3 part a of advent of code 2023 https://adventofcode.com/2023/day/3
 
+// Learning test driven development and C++ classes
+
 #include <iostream>
 
 #include "h_files/lottery_card_checker.h"
