@@ -66,10 +66,10 @@ static std::vector<int> determine_part_numbers(const std::vector<std::vector<cha
             // create necessary variables for memorizing values
             static bool is_part = false;
             const int start_column = j;
-            //char is integer
+            // char value IS integer. Check if the value is within 48-57 aka the character would be the numbers 0-9.
             while (is_char_integer(svec[i][j])){
 
-                // check if it is a part number.
+                // check if it is a part number: if gear is near
                 if (is_part == false && is_this_part(svec, i, j)){
                     is_part = true;
                 }

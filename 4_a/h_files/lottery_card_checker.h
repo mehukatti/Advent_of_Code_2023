@@ -16,8 +16,8 @@ class LotteryCards
 {
 public:
     string card_path;
-    std::vector<std::vector<char>> card_file_vector;
-    std::vector<Card> card_structure;
+    // The following contains data after running read_cards()
+    std::vector<Card> card_structure; // structure of cards read from a file
 
     void read_cards()
     {
@@ -30,7 +30,6 @@ public:
         std::ifstream MyReadFile(card_path);
         cout << "reading the lines" << "\n";
         while( getline(MyReadFile, line) ){
-            card_file_vector.push_back(std::vector<char>(line.begin(), line.end())); //line is broken into vector containing the characters. The line vector is saved in the card_file_vector vector
             struct Card card = create_card_struct(line);
             card_structure.push_back(card);
         }
@@ -75,7 +74,10 @@ public:
     }
 
     void test_reading_card_structure(std::vector<Card>& card_structure){
-        cout << "The input file: \n";
+        // For testing purposes
+        // Argument: Card Struct
+        // Function: Prints the card structure that
+        cout << "The card struct: \n";
         for (int i=0;i < card_structure.size();i++){
             struct Card card_from_vector = card_structure[i];
 
@@ -99,6 +101,8 @@ public:
 private:
     std::vector<int> integers_to_vector(std::string& str)
     {
+        // Arguments: string of numbers separated by spaces
+        // Return vector of those numbers as integers
         std::vector<int> numbers;
 
         std::regex words_regex("[[:digit:]]+");
