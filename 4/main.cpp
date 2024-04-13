@@ -14,10 +14,10 @@ int main()
 
 	CardsOfElf.card_path = "input.txt";
 	CardsOfElf.read_cards();
-	// For testing that part b copy number addition works
-	CardsOfElf.test_reading_card_structure(CardsOfElf.card_structure);
-
-	// check points from winning numbers
+	
 	CardsOfElf.determine_points_for_part_a();
+
+	CardsOfElf.determine_winned_copies_part_b();
+	CardsOfElf.total_copies_part_b();
 	return 0;
 }
