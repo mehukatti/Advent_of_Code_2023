@@ -39,6 +39,42 @@ public:
         return;
     }
 
+    void determine_winned_copies_part_b(){
+        // iterate all cards and add number of winned copies to the following cards
+        for (int i=0;i < card_structure.size();i++){
+            struct Card card_from_vector = card_structure[i];
+
+            cout << "card_id = " << card_from_vector.card_id << "\n";
+            int winned_copies = winned_copies_per_card(card_from_vector);
+            cout << "winned_copies = " << winned_copies << "\n";
+
+            if (i + winned_copies + 1 > card_structure.size()){
+                // If you won more copies than cards left, remove the extra copies to not go over the vector size
+                winned_copies = card_structure.size()-i-1;
+            }
+            // if any copies were winned, add one copy to the following cards in the structure
+            for (int index_to_copy=i+1; index_to_copy <= i + winned_copies; index_to_copy++){
+                struct Card card_to_copy = card_structure[index_to_copy];
+                card_to_copy.copy_num = card_to_copy.copy_num + card_from_vector.copy_num;
+                card_structure[index_to_copy] = card_to_copy; // Need to update it back to the vector
+            }
+            
+            cout << "\n\n";
+        }
+        return;
+    }
+
+    int total_copies_part_b(){
+        // Run this after running determine_winned_copies_part_b
+        int total_copies = 0;
+        for (int i=0;i < card_structure.size();i++){
+            struct Card card_from_vector = card_structure[i];
+            total_copies = total_copies + card_from_vector.copy_num;
+        }
+        cout << "total copies = " << total_copies << "\n";
+        return total_copies;
+    }
+
     void determine_points_for_part_a(){
         // Fort part a of the day 4
         int total_points = 0;
@@ -130,9 +166,27 @@ private:
 
         return card;
     }
-    
+
+    int winned_copies_per_card(Card& card){
+        // Fort part A of the day 4
+        int winned_number_of_copies = 0;
+        cout << "winners: " << "\n";
+        for (int j=0;j < card.card_numbers.size();j++){
+            for (int z=0;z < card.winning_numbers.size();z++){
+                // test if the card number matches the winning number
+                if (card.card_numbers[j] != card.winning_numbers[z]){
+                    continue;
+                }
+                cout << card.card_numbers[j] << " ";
+                // If winning card is found, add one winned copy
+                winned_number_of_copies++;
+            }
+        }
+        return winned_number_of_copies;
+    }
+
     int points_per_card(Card& card){
-        // Fort part a of the day 4
+        // Fort part A of the day 4
         int card_points = 0;
         cout << "winners: " << "\n";
         for (int j=0;j < card.card_numbers.size();j++){
