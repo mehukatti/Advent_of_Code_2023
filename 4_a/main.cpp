@@ -14,6 +14,8 @@ int main()
 
 	CardsOfElf.card_path = "input.txt";
 	CardsOfElf.read_cards();
+	// For testing that part b copy number addition works
+	CardsOfElf.test_reading_card_structure(CardsOfElf.card_structure);
 
 	// check points from winning numbers
 	CardsOfElf.determine_points();
