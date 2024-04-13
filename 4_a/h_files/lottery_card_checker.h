@@ -10,6 +10,7 @@ struct Card {
     int card_id;
     std::vector<int> winning_numbers;
     std::vector<int> card_numbers;
+    int copy_num; // For part b of day 4. Does not bother the part a calculations
 };
 
 class LotteryCards
@@ -39,6 +40,7 @@ public:
     }
 
     void determine_points(){
+        // Fort part a of the day 4
         int total_points = 0;
         for (int i=0;i < card_structure.size();i++){
             struct Card card_from_vector = card_structure[i];
@@ -54,6 +56,7 @@ public:
     }
     
     int points_per_card(Card& card){
+        // Fort part a of the day 4
         int card_points = 0;
         cout << "winners: " << "\n";
         for (int j=0;j < card.card_numbers.size();j++){
@@ -93,6 +96,9 @@ public:
             for (int j=0;j < card_from_vector.card_numbers.size();j++){
                 cout << card_from_vector.card_numbers[j] << " ";
             }
+            cout << "\n";
+
+            cout << "copy_num = " << card_from_vector.copy_num << "\n";
             cout << "\n\n";
         }
         return;
@@ -141,6 +147,7 @@ private:
         card.card_id = card_id;
         card.winning_numbers = winning_numbers;
         card.card_numbers = card_numbers;
+        card.copy_num = 1; // You always have one copy at the start.
 
         return card;
     }
