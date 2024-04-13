@@ -18,6 +18,6 @@ int main()
 	CardsOfElf.test_reading_card_structure(CardsOfElf.card_structure);
 
 	// check points from winning numbers
-	CardsOfElf.determine_points();
+	CardsOfElf.determine_points_for_part_a();
 	return 0;
 }

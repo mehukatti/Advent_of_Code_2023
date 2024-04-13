@@ -39,7 +39,7 @@ public:
         return;
     }
 
-    void determine_points(){
+    void determine_points_for_part_a(){
         // Fort part a of the day 4
         int total_points = 0;
         for (int i=0;i < card_structure.size();i++){
@@ -53,27 +53,6 @@ public:
         }
         cout << "Total points: " << total_points << endl;
         return;
-    }
-    
-    int points_per_card(Card& card){
-        // Fort part a of the day 4
-        int card_points = 0;
-        cout << "winners: " << "\n";
-        for (int j=0;j < card.card_numbers.size();j++){
-            for (int z=0;z < card.winning_numbers.size();z++){
-                // test if the card number matches the winning number
-                if (card.card_numbers[j] != card.winning_numbers[z]){
-                    continue;
-                }
-                cout << card.card_numbers[j] << " ";
-                if (card_points==0){
-                    card_points=1;
-                } else {
-                    card_points = card_points*2;
-                }
-            }
-        }
-        return card_points;
     }
 
     void test_reading_card_structure(std::vector<Card>& card_structure){
@@ -150,5 +129,26 @@ private:
         card.copy_num = 1; // You always have one copy at the start.
 
         return card;
+    }
+    
+    int points_per_card(Card& card){
+        // Fort part a of the day 4
+        int card_points = 0;
+        cout << "winners: " << "\n";
+        for (int j=0;j < card.card_numbers.size();j++){
+            for (int z=0;z < card.winning_numbers.size();z++){
+                // test if the card number matches the winning number
+                if (card.card_numbers[j] != card.winning_numbers[z]){
+                    continue;
+                }
+                cout << card.card_numbers[j] << " ";
+                if (card_points==0){
+                    card_points=1;
+                } else {
+                    card_points = card_points*2;
+                }
+            }
+        }
+        return card_points;
     }
 };
