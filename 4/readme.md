@@ -9,3 +9,4 @@ Part b:
     * (Card 10 has 5 winning numbers, you now have two 11, 12, 13, 14, 15)
 * The winned copies are scored the same (you get multiple copies) and they have the same card number as their original card (e.g. cards 11-15)
     * Repeat until copies do not generate anymore copies.
+    * How many total copies you have?
